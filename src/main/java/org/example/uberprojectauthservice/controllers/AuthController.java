@@ -47,7 +47,7 @@ public class AuthController {
         if(authentication.isAuthenticated()){
             String jwtToken =jwtService.createToken(authRequestDto.getEmail());
             ResponseCookie cookie= ResponseCookie.from("JwtToken",jwtToken)
-                    .httpOnly(true)
+                    .httpOnly(false)
                     .secure(false)
                     .maxAge(cookieExpiry)
                     .path("/")

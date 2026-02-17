@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public class AuthPassengerDetails implements UserDetails {
+public class AuthPassengerDetails extends Passenger implements UserDetails {
 
     private String username;
     private String password;
@@ -22,8 +22,8 @@ public class AuthPassengerDetails implements UserDetails {
     }
 
     @Override
-    public @Nullable String getPassword() {
-        return "";
+    public  String getPassword() {
+        return this.password;
     }
 
     @Override
@@ -33,21 +33,21 @@ public class AuthPassengerDetails implements UserDetails {
 /// /below functions will not be used
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
 }
